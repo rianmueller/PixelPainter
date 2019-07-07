@@ -44,6 +44,7 @@ for (i = 0; i < 32; i++) {
   let color = document.createElement("div");
   color.className = "color";
   color.style.backgroundColor = colorPalette[i];
+  color.addEventListener("click", pickColor);
   palette.appendChild(color);
 }
 
@@ -54,10 +55,10 @@ activeColorBox.className = "container";
 pixelPainter.appendChild(activeColorBox);
 
 // ACTIVE COLOR CELL
-let activeColor = document.createElement("div");
-activeColor.id = "activeColor";
-activeColor.style.backgroundColor = "#333333";
-activeColorBox.appendChild(activeColor);
+let activeColorCell = document.createElement("div");
+activeColorCell.id = "activeColor";
+activeColorCell.style.backgroundColor = "#333333";
+activeColorBox.appendChild(activeColorCell);
 
 // ERASE
 let eraseButton = document.createElement("button");
@@ -81,14 +82,12 @@ pixelPainter.appendChild(canvas);
 for (i = 0; i < 256; i++) {
   let pixel = document.createElement("div");
   pixel.className = "pixel";
-  pixel.style.backgroundColor = "#00ff00";
+  pixel.style.backgroundColor = "white";
   canvas.appendChild(pixel);
 }
 
 function pickColor() {
-  let activeColor = this.pickerData.style.backgroundColor;
+  let activeColor = this.style.backgroundColor;
   console.log("Active color is " + activeColor);
-  document.getElementById(
-    "activeColorCell"
-  ).style.backgroundColor = activeColor;
+  activeColorCell.style.backgroundColor = activeColor;
 }

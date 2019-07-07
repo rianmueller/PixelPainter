@@ -1,14 +1,16 @@
-.pixelPainter {
+/* .pixelPainter {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 6em;
   height: 5em;
-}
+} */
 
 .container {
+  /* background-color: gray; */
   display: grid;
+  /* grid-gap: 1px; */
 }
 
 #palette {
@@ -17,8 +19,8 @@
 }
 
 #activeColorBox {
-  grid-template-columns: 80px;
-  grid-template-rows: 80px;
+  grid-template-columns: 100px;
+  grid-template-rows: 100px;
 }
 
 #canvas {
@@ -26,123 +28,6 @@
   grid-template-rows: 20px 20px 20px 20px 20px 20px 20px 20px 20px 20px 20px 20px 20px 20px 20px 20px;
 }
 
-/* #table {
-  border-collapse: collapse;
+.pixel {
+  border: 1px dotted #222222;
 }
-
-tr {
-  height: 20px;
-}
-
-td {
-  width: 20px;
-  border: 1px solid black;
-}
-
-#activeColor {
-  background-color: white;
-}
-
-#pickerPixel0-0 {
-  background-color: #000000;
-}
-#pickerPixel0-1 {
-  background-color: #222034;
-}
-#pickerPixel0-2 {
-  background-color: #45283c;
-}
-#pickerPixel0-3 {
-  background-color: #663931;
-}
-
-#pickerPixel1-0 {
-  background-color: #8f563b;
-}
-#pickerPixel1-1 {
-  background-color: #df7126;
-}
-#pickerPixel1-2 {
-  background-color: #d9a066;
-}
-#pickerPixel1-3 {
-  background-color: #eec39a;
-}
-
-#pickerPixel2-0 {
-  background-color: #fbf236;
-}
-#pickerPixel2-1 {
-  background-color: #99e550;
-}
-#pickerPixel2-2 {
-  background-color: #6abe30;
-}
-#pickerPixel2-3 {
-  background-color: #37946e;
-}
-
-#pickerPixel3-0 {
-  background-color: #4b692f;
-}
-#pickerPixel3-1 {
-  background-color: #524b24;
-}
-#pickerPixel3-2 {
-  background-color: #323c39;
-}
-#pickerPixel3-3 {
-  background-color: #3f3f74;
-}
-
-#pickerPixel4-0 {
-  background-color: #306082;
-}
-#pickerPixel4-1 {
-  background-color: #5b6ee1;
-}
-#pickerPixel4-2 {
-  background-color: #639bff;
-}
-#pickerPixel4-3 {
-  background-color: #5fcde4;
-}
-
-#pickerPixel5-0 {
-  background-color: #cbdbfc;
-}
-#pickerPixel5-1 {
-  background-color: #ffffff;
-}
-#pickerPixel5-2 {
-  background-color: #9badb7;
-}
-#pickerPixel5-3 {
-  background-color: #847e87;
-}
-
-#pickerPixel6-0 {
-  background-color: #696a6a;
-}
-#pickerPixel6-1 {
-  background-color: #595652;
-}
-#pickerPixel6-2 {
-  background-color: #76428a;
-}
-#pickerPixel6-3 {
-  background-color: #ac3232;
-}
-
-#pickerPixel7-0 {
-  background-color: #d95763;
-}
-#pickerPixel7-1 {
-  background-color: #d77bba;
-}
-#pickerPixel7-2 {
-  background-color: #8f974a;
-}
-#pickerPixel7-3 {
-  background-color: #8a6f30;
-} */
