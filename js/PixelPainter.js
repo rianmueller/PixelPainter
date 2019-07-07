@@ -64,6 +64,7 @@ activeColorBox.appendChild(activeColorCell);
 let eraseButton = document.createElement("button");
 eraseButton.id = "erase";
 eraseButton.innerHTML = "Erase";
+eraseButton.addEventListener("click", erase);
 pixelPainter.appendChild(eraseButton);
 
 // CLEAR
@@ -91,10 +92,14 @@ let activeColor = "#ffffff";
 
 function pickColor() {
   activeColor = this.style.backgroundColor;
-  console.log("Active color is " + activeColor);
   activeColorCell.style.backgroundColor = activeColor;
 }
 
 function setColor() {
   this.style.backgroundColor = activeColor;
+}
+
+function erase() {
+  activeColor = "#ffffff";
+  activeColorCell.style.backgroundColor = activeColor;
 }

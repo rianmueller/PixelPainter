@@ -29,5 +29,6 @@
 }
 
 .pixel {
+  background-color: white;
   border: 1px dotted #222222;
 }
