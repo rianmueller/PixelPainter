@@ -83,11 +83,18 @@ for (i = 0; i < 256; i++) {
   let pixel = document.createElement("div");
   pixel.className = "pixel";
   pixel.style.backgroundColor = "white";
+  pixel.addEventListener("click", setColor);
   canvas.appendChild(pixel);
 }
 
+let activeColor = "#ffffff";
+
 function pickColor() {
-  let activeColor = this.style.backgroundColor;
+  activeColor = this.style.backgroundColor;
   console.log("Active color is " + activeColor);
   activeColorCell.style.backgroundColor = activeColor;
+}
+
+function setColor() {
+  this.style.backgroundColor = activeColor;
 }
