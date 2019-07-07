@@ -84,7 +84,7 @@ pixelPainter.appendChild(canvas);
 for (i = 0; i < 256; i++) {
   let pixel = document.createElement("div");
   pixel.className = "pixel";
-  pixel.addEventListener("click", setColor);
+  pixel.addEventListener("mousedown", setColor);
   canvas.appendChild(pixel);
 }
 
@@ -96,7 +96,24 @@ function pickColor() {
 }
 
 function setColor() {
+  let allPixels = document.querySelectorAll(".pixel");
+  for (i = 0; i < 256; i++) {
+    allPixels[i].addEventListener("mouseover", dragColor);
+    allPixels[i].addEventListener("mouseup", endColor);
+  }
   this.style.backgroundColor = activeColor;
+}
+
+function dragColor() {
+  this.style.backgroundColor = activeColor;
+}
+
+function endColor() {
+  let allPixels = document.querySelectorAll(".pixel");
+  for (i = 0; i < 256; i++) {
+    allPixels[i].removeEventListener("mouseover", dragColor);
+    allPixels[i].removeEventListener("mouseup", endColor);
+  }
 }
 
 function erase() {
