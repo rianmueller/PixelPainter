@@ -33,11 +33,23 @@ let colorPalette = [
   "#8a6f30"
 ];
 
+let stamp = [];
+
+// LEFT COLUMN
+let leftColumn = document.createElement("div");
+leftColumn.id = "outerLeft";
+pixelPainter.appendChild(leftColumn);
+
+// RIGHT COLUMN - CANVAS
+let rightColumn = document.createElement("div");
+rightColumn.id = "outerRight";
+pixelPainter.appendChild(rightColumn);
+
 // PALETTE
 let palette = document.createElement("div");
 palette.id = "palette";
 palette.className = "container";
-pixelPainter.appendChild(palette);
+leftColumn.appendChild(palette);
 
 // PALETTE COLORS
 for (i = 0; i < 32; i++) {
@@ -52,12 +64,12 @@ for (i = 0; i < 32; i++) {
 let activeColorBox = document.createElement("div");
 activeColorBox.id = "activeColorBox";
 activeColorBox.className = "container";
-pixelPainter.appendChild(activeColorBox);
+leftColumn.appendChild(activeColorBox);
 
 // ACTIVE COLOR CELL
 let activeColorCell = document.createElement("div");
 activeColorCell.id = "activeColor";
-activeColorCell.style.backgroundColor = "#333333";
+activeColorCell.style.backgroundColor = "#ffffff";
 activeColorBox.appendChild(activeColorCell);
 
 // ERASE
@@ -65,20 +77,27 @@ let eraseButton = document.createElement("button");
 eraseButton.id = "erase";
 eraseButton.innerHTML = "Erase";
 eraseButton.addEventListener("click", erase);
-pixelPainter.appendChild(eraseButton);
+leftColumn.appendChild(eraseButton);
 
 // CLEAR
 let clearButton = document.createElement("button");
 clearButton.id = "clear";
 clearButton.innerHTML = "Clear";
 clearButton.addEventListener("click", clear);
-pixelPainter.appendChild(clearButton);
+leftColumn.appendChild(clearButton);
+
+// SAVE
+let saveButton = document.createElement("button");
+saveButton.id = "save";
+saveButton.innerHTML = "Save";
+saveButton.addEventListener("click", save);
+leftColumn.appendChild(saveButton);
 
 // CANVAS
 let canvas = document.createElement("div");
 canvas.id = "canvas";
 canvas.className = "container";
-pixelPainter.appendChild(canvas);
+rightColumn.appendChild(canvas);
 
 // PIXELS
 for (i = 0; i < 256; i++) {
@@ -124,6 +143,33 @@ function erase() {
 function clear() {
   let allPixels = document.querySelectorAll(".pixel");
   for (i = 0; i < 256; i++) {
+    stamp[i] = allPixels[i].style.backgroundColor;
     allPixels[i].style.backgroundColor = "#ffffff";
+    allPixels[i].removeEventListener("mouseover", dragColor);
+    allPixels[i].removeEventListener("mouseup", endColor);
   }
+}
+
+// STAMP
+let stampFrame = document.createElement("div");
+stampFrame.id = "stamp";
+stampFrame.className = "stampContainer";
+leftColumn.appendChild(stampFrame);
+
+// STAMP CONTENT
+for (i = 0; i < 256; i++) {
+  let stampPixel = document.createElement("div");
+  stampPixel.className = "stampPixel";
+  stampPixel.style.backgroundColor = stamp[i];
+  stampFrame.appendChild(stampPixel);
+}
+
+function save() {
+  let allPixels = document.querySelectorAll(".pixel");
+  let stampPixel = document.querySelectorAll(".stampPixel");
+  for (i = 0; i < 256; i++) {
+    stamp[i] = allPixels[i].style.backgroundColor;
+    stampPixel[i].style.backgroundColor = stamp[i];
+  }
+  console.log(stamp);
 }
