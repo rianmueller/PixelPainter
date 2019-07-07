@@ -71,6 +71,7 @@ pixelPainter.appendChild(eraseButton);
 let clearButton = document.createElement("button");
 clearButton.id = "clear";
 clearButton.innerHTML = "Clear";
+clearButton.addEventListener("click", clear);
 pixelPainter.appendChild(clearButton);
 
 // CANVAS
@@ -83,7 +84,6 @@ pixelPainter.appendChild(canvas);
 for (i = 0; i < 256; i++) {
   let pixel = document.createElement("div");
   pixel.className = "pixel";
-  pixel.style.backgroundColor = "white";
   pixel.addEventListener("click", setColor);
   canvas.appendChild(pixel);
 }
@@ -102,4 +102,11 @@ function setColor() {
 function erase() {
   activeColor = "#ffffff";
   activeColorCell.style.backgroundColor = activeColor;
+}
+
+function clear() {
+  let allPixels = document.querySelectorAll(".pixel");
+  for (i = 0; i < 256; i++) {
+    allPixels[i].style.backgroundColor = "#ffffff";
+  }
 }
